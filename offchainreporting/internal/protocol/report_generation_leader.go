@@ -237,6 +237,7 @@ func (repgen *reportGenerationState) messageReport(msg MessageReport, sender typ
 
 	repgen.leaderState.report[sender] = &msg.Report
 
+  // (DCMMC) 发送最终 f 个 signatures 和结果
 	// upon exists R s.t. |{p_j ∈ P | report[j]=(R,·)}| > f ∧ phase = REPORT
 	{ // FUTUREWORK: make it non-quadratic time
 		sigs := [][]byte{}

@@ -617,6 +617,7 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
     }
 
     { // Verify signatures attached to report
+      // (DCMMC) On-chain Verification of Schnorr Signatures
       bytes32 h = keccak256(_report);
       bool[maxNumOracles] memory signed;
 
@@ -631,13 +632,15 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
     }
 
     { // Check the report contents, and record the result
-      for (uint i = 0; i < r.observations.length - 1; i++) {
-        bool inOrder = r.observations[i] <= r.observations[i+1];
-        require(inOrder, "observations not sorted");
-      }
+      // (DCMMC) For MySQL task, we do not need check this.
+      // for (uint i = 0; i < r.observations.length - 1; i++) {
+      //   bool inOrder = r.observations[i] <= r.observations[i+1];
+      //   require(inOrder, "observations not sorted");
+      // }
 
       int192 median = r.observations[r.observations.length/2];
-      require(minAnswer <= median && median <= maxAnswer, "median is out of min-max range");
+      // (DCMMC) this check is not allowed because we are in MySQL task instead of price feed.
+      // require(minAnswer <= median && median <= maxAnswer, "median is out of min-max range");
       r.hotVars.latestAggregatorRoundId++;
       s_transmissions[r.hotVars.latestAggregatorRoundId] =
         Transmission(median, uint64(block.timestamp));
