@@ -586,8 +586,9 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
       require(_ss.length == _rs.length, "signatures out of registration");
       require(r.observations.length <= maxNumOracles,
               "num observations out of bounds");
-      require(r.observations.length > 2 * r.hotVars.threshold,
-              "too few values to trust median");
+      // (DCMMC) There are must be == 2*f + 1 observations
+      require(r.observations.length == 2 * r.hotVars.threshold + 1,
+              "the number of observations must be 2*f+1");
 
       // Copy signature parities in bytes32 _rawVs to bytes r.v
       r.vs = new bytes(_rs.length);
@@ -638,7 +639,23 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
       //   require(inOrder, "observations not sorted");
       // }
 
-      int192 median = r.observations[r.observations.length/2];
+      // (DCMMC) majority voting
+      // (DCMMC) all the values initialize to zero
+      mapping(int192 => uint) obsv_cnter;
+      // (DCMMC) median is the majority_result
+      int192 median = 0;
+      bool majority_success = false;
+      for (uint i = 0; i < r.observations.length; i++) {
+        obsv_cnter[r.observations[i]] += 1;
+        if (obsv_cnter[r.observations[i]] > r.hotVars.threshold) {
+          majority_result = r.observations[i];
+          majority_success = true;
+          break;
+        }
+      }
+      require(majority_success, "majority voting failed!")
+
+      // int192 median = r.observations[r.observations.length/2];
       // (DCMMC) this check is not allowed because we are in MySQL task instead of price feed.
       // require(minAnswer <= median && median <= maxAnswer, "median is out of min-max range");
       r.hotVars.latestAggregatorRoundId++;

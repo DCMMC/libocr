@@ -3,6 +3,7 @@ package protocol
 import (
 	"sort"
 	"time"
+	"math/rand"
 
 	"github.com/smartcontractkit/libocr/offchainreporting/types"
 )
@@ -185,9 +186,15 @@ func (repgen *reportGenerationState) eventTGraceTimeout() {
 			})
 		}
 	}
-	sort.Slice(asos, func(i, j int) bool {
-		return asos[i].SignedObservation.Observation.Less(asos[j].SignedObservation.Observation)
-	})
+  // (DCMMC) do not sort because the observations are not prices
+	// sort.Slice(asos, func(i, j int) bool {
+	// 	return asos[i].SignedObservation.Observation.Less(asos[j].SignedObservation.Observation)
+	// })
+  // (DCMMC) Randomly sample 2f+1 observations from all the observations.
+  // (DCMMC) Like M-out-of-N trick.
+  rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(asos), func(i, j int) { asos[i], asos[j] = asos[j], asos[i] })
+  asos = asos[:(2 * repgen.config.F + 1)]
 	repgen.netSender.Broadcast(MessageReportReq{
 		repgen.e,
 		repgen.leaderState.r,

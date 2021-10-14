@@ -484,9 +484,12 @@ func (repgen *reportGenerationState) shouldReport(observations []AttributedSigne
 		resultTransmissionDetails.configDigest == repgen.config.ConfigDigest &&
 			resultTransmissionDetails.epoch == 0 &&
 			resultTransmissionDetails.round == 0
-	deviation := // Has the result changed enough to merit a new report?
-		observations[len(observations)/2].SignedObservation.Observation.
-			Deviates(answer, alphaPPB)
+  // (DCMMC) We do not need this deviation check becahse this is only usefull to price feed.
+  // (DCMMC) and we should always report the results
+  deviation := true
+	// deviation := // Has the result changed enough to merit a new report?
+	// 	observations[len(observations)/2].SignedObservation.Observation.
+	// 		Deviates(answer, alphaPPB)
 	deltaCTimeout := // Has enough time passed since the last report, to merit a new one?
 		resultTransmissionDetails.latestTimestamp.Add(deltaC).
 			Before(time.Now())

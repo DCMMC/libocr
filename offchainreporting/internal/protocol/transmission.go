@@ -304,6 +304,7 @@ func (t *transmissionState) eventTTransmitTimeout() {
 	ok = t.subprocesses.BlockForAtMost(
 		t.ctx,
 		t.localConfig.ContractTransmitterTransmitTimeout,
+    // (DCMMC) send the transaction to Ethereum
 		func(ctx context.Context) {
 			err = t.transmitter.Transmit(ctx, item.SerializedReport, item.Rs, item.Ss, item.Vs)
 		},
@@ -370,7 +371,9 @@ func (t *transmissionState) shouldTransmit(ev EventTransmit, contractEpochRound 
 		alphaPPB = override.AlphaPPB
 	}
 
-	deviates := t.latestMedian.Deviates(reportMedian, alphaPPB)
+  // (DCMMC) remove the deviate check
+	// deviates := t.latestMedian.Deviates(reportMedian, alphaPPB)
+  deviates = false
 	nothingPending := t.latestEpochRound.Less(contractEpochRound) || t.latestEpochRound == contractEpochRound
 	result := deviates || nothingPending
 
