@@ -511,6 +511,7 @@ func sortedGreaterThan(xs []uint32, y uint32) (rv []uint32) {
 	return rv
 }
 
+// (DCMMC) Elect leader with (F_x(e) mod n)
 // Leader will produce an oracle id for the given epoch.
 func Leader(epoch uint32, n int, key [16]byte) (leader types.OracleID) {
 	// No need for HMAC. Since we use Keccak256, prepending
