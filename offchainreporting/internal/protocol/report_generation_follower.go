@@ -459,7 +459,8 @@ func (repgen *reportGenerationState) shouldReport(observations []AttributedSigne
 		return true
 	}
 
-	answer, err := observation.MakeObservation(resultTransmissionDetails.latestAnswer)
+  // (DCMMC) answer => _
+	_, err := observation.MakeObservation(resultTransmissionDetails.latestAnswer)
 	if err != nil {
 		repgen.logger.Error("shouldReport: Error during observation.MakeObservation", types.LogFields{
 			"round": repgen.followerState.r,
