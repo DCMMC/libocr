@@ -648,7 +648,7 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
       for (uint i = 0; i < r.observations.length; i++) {
         obsv_cnter[r.observations[i]] += 1;
         if (obsv_cnter[r.observations[i]] > r.hotVars.threshold) {
-          majority_result = r.observations[i];
+          median = r.observations[i];
           majority_success = true;
           break;
         }

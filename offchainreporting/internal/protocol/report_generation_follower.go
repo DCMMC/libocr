@@ -103,6 +103,7 @@ func (repgen *reportGenerationState) messageObserveReq(msg MessageObserveReq, se
 		repgen.l,
 	)
 
+  // (DCMMC) get the observation of the price
 	value := repgen.observeValue()
 	if value.IsMissingValue() {
 		// Failed to get data from API, nothing to be done...
