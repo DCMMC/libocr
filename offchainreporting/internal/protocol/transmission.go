@@ -373,7 +373,7 @@ func (t *transmissionState) shouldTransmit(ev EventTransmit, contractEpochRound 
 
   // (DCMMC) remove the deviate check
 	// deviates := t.latestMedian.Deviates(reportMedian, alphaPPB)
-  deviates = false
+  deviates := false
 	nothingPending := t.latestEpochRound.Less(contractEpochRound) || t.latestEpochRound == contractEpochRound
 	result := deviates || nothingPending
 
