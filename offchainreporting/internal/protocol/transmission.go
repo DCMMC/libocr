@@ -353,7 +353,8 @@ func (t *transmissionState) shouldTransmit(ev EventTransmit, contractEpochRound 
 		return false
 	}
 
-	reportMedian, err := ev.Report.AttributedObservations.Median()
+  // (DCMMC) reportMedian => _
+	_, err := ev.Report.AttributedObservations.Median()
 	if err != nil {
 		t.logger.Error("could not compute median", types.LogFields{
 			"error": err,
