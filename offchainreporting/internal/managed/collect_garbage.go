@@ -5,8 +5,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
 )
 
 const collectInterval = 10 * time.Minute

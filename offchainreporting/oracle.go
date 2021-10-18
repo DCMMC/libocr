@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/pkg/errors"
-	"github.com/smartcontractkit/libocr/offchainreporting/internal/managed"
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
-	"github.com/smartcontractkit/libocr/subprocesses"
+	"github.com/DCMMC/libocr/offchainreporting/internal/managed"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/subprocesses"
 
 	"golang.org/x/sync/semaphore"
 )

@@ -7,12 +7,12 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/smartcontractkit/libocr/offchainreporting/internal/config"
-	"github.com/smartcontractkit/libocr/offchainreporting/internal/protocol/observation"
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
-	"github.com/smartcontractkit/libocr/permutation"
-	"github.com/smartcontractkit/libocr/subprocesses"
+	"github.com/DCMMC/libocr/offchainreporting/internal/config"
+	"github.com/DCMMC/libocr/offchainreporting/internal/protocol/observation"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/permutation"
+	"github.com/DCMMC/libocr/subprocesses"
 	"golang.org/x/crypto/sha3"
 )
 

@@ -9,10 +9,10 @@ import (
 	"github.com/libp2p/go-libp2p-core/transport"
 	tptu "github.com/libp2p/go-libp2p-transport-upgrader"
 	"github.com/libp2p/go-tcp-transport"
-	"github.com/smartcontractkit/libocr/networking/knockingtls"
+	"github.com/DCMMC/libocr/networking/knockingtls"
 
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
 
 	"github.com/libp2p/go-libp2p"
 	p2pcrypto "github.com/libp2p/go-libp2p-core/crypto"

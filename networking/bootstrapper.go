@@ -7,9 +7,9 @@ import (
 
 	p2ppeer "github.com/libp2p/go-libp2p-core/peer"
 	"github.com/pkg/errors"
-	dhtrouter "github.com/smartcontractkit/libocr/networking/dht-router"
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
+	dhtrouter "github.com/DCMMC/libocr/networking/dht-router"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
 )
 
 var (

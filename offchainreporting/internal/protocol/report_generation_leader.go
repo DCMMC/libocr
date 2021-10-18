@@ -5,7 +5,7 @@ import (
 	"time"
 	"math/rand"
 
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/offchainreporting/types"
 )
 
 ///////////////////////////////////////////////////////////

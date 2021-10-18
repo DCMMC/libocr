@@ -3,10 +3,10 @@ package managed
 import (
 	"context"
 
-	"github.com/smartcontractkit/libocr/offchainreporting/internal/config"
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
-	"github.com/smartcontractkit/libocr/subprocesses"
+	"github.com/DCMMC/libocr/offchainreporting/internal/config"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
+	"github.com/DCMMC/libocr/subprocesses"
 )
 
 // RunManagedBootstrapNode runs a "managed" bootstrap node. It handles

@@ -18,10 +18,10 @@ import (
 	swarm "github.com/libp2p/go-libp2p-swarm"
 	rhost "github.com/libp2p/go-libp2p/p2p/host/routed"
 	"github.com/pkg/errors"
-	dhtrouter "github.com/smartcontractkit/libocr/networking/dht-router"
-	"github.com/smartcontractkit/libocr/networking/knockingtls"
-	"github.com/smartcontractkit/libocr/offchainreporting/loghelper"
-	"github.com/smartcontractkit/libocr/offchainreporting/types"
+	dhtrouter "github.com/DCMMC/libocr/networking/dht-router"
+	"github.com/DCMMC/libocr/networking/knockingtls"
+	"github.com/DCMMC/libocr/offchainreporting/loghelper"
+	"github.com/DCMMC/libocr/offchainreporting/types"
 )
 
 var (

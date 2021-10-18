@@ -46,6 +46,8 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
     uint64 timestamp;
   }
   mapping(uint32 /* aggregator round ID */ => Transmission) internal s_transmissions;
+  // (DCMMC) all the values initialize to zero
+  mapping(int192 => uint) internal obsv_cnter;
 
   // incremented each time a new config is posted. This count is incorporated
   // into the config digest, to prevent replay attacks.
@@ -640,8 +642,6 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
       // }
 
       // (DCMMC) majority voting
-      // (DCMMC) all the values initialize to zero
-      mapping(int192 => uint) obsv_cnter;
       // (DCMMC) median is the majority_result
       int192 median = 0;
       bool majority_success = false;
@@ -653,7 +653,7 @@ contract OffchainAggregator is Owned, OffchainAggregatorBilling, AggregatorV2V3I
           break;
         }
       }
-      require(majority_success, "majority voting failed!")
+      require(majority_success, "majority voting failed!");
 
       // int192 median = r.observations[r.observations.length/2];
       // (DCMMC) this check is not allowed because we are in MySQL task instead of price feed.
